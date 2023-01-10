@@ -30,9 +30,6 @@ function Layout({children, user}) {
 
                         <a className="navbar-brand" href="/">Good news everyone  <br /> <h5>Привет - {user}</h5>  </a> 
                           <ul className="navbar-nav">
-                          {/* <li className="nav-item">
-                          <a className="nav-link active" aria-current="page" href="/">Главная</a>
-                          </li> */}
                           <li className="nav-item">
                               <a className="nav-link" href="/news">Поиск хороших новостей</a>
                             </li>
@@ -55,9 +52,6 @@ function Layout({children, user}) {
 
                       <a className="navbar-brand" href="/">Good news everyone   </a> 
                           <ul className="navbar-nav">
-                        {/* <li className="nav-item">
-                          <a className="nav-link active" aria-current="page" href="/">Главная</a>
-                          </li> */}
                             <li className="nav-item">
                               <a className="nav-link" href="/reg">Регистрация</a>
                             </li><li className="nav-item">
