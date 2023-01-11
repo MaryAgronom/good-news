@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Bad.init({
-    word: DataTypes.STRING,
+    bword: DataTypes.STRING,
     userid: DataTypes.INTEGER,
     
   }, {

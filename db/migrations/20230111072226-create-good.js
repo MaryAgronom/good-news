@@ -9,7 +9,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      word: {
+      gword: {
         allowNull: false,
         type: Sequelize.STRING
       },
