@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Good.init({
-    word: DataTypes.STRING,
+    gword: DataTypes.STRING,
     userid: DataTypes.INTEGER,
   }, {
     sequelize,

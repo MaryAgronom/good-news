@@ -28,6 +28,7 @@ const regRoute = require('./routes/regRoute');
 const logoutRoute = require('./routes/logoutRout');
 const loginRoute = require('./routes/loginRouter');
 const cabinetRoute = require('./routes/cabinetRoute');
+const poiskRoute = require('./routes/poiskRoute');
 
 const sessionConfig = {
     name: 'gncookies',
@@ -54,6 +55,7 @@ const sessionConfig = {
   app.use('/logout', logoutRoute);
   app.use('/login', loginRoute);
   app.use('/cabinet', cabinetRoute);
+  app.use('/poisk', poiskRoute);
   
 
 
