@@ -5,16 +5,18 @@ const Layout = require('./Layout');
 function Poisk( {user, plainSlova} ) {
   return (
     <Layout user={user}>
-<form id='poisk' method='POST' action='/poisk'>
+<script defer src="./js/poiskFeth.js"> </script>
+
+<form name='poisk' id='poisk'>
   <fieldset>
     <legend>Выберите новости по ключевым словам:</legend>
     <div className="mb-3">
       <label htmlFor="TextInput" className="form-label">Хорошие слова</label>
-      <input type="text" id="TextInput" className="form-control" name="gwords" />
+      <input type="text" id="TextInput" className="form-control" name="gword" />
     </div>
     <div className="mb-3">
       <label htmlFor="TextInput" className="form-label">Плохие слова</label>
-      <input type="text" id="TextInput" className="form-control" name="bwords" />
+      <input type="text" id="TextInput" className="form-control" name="bword" />
     </div>
     <div className="mb-3">
       <div className="form-check">
