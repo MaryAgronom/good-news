@@ -2,7 +2,7 @@ const React = require('react');
 const Layout = require('./Layout');
 
 
-function Poisk( {user} ) {
+function Poisk( {user, plainSlova} ) {
   return (
     <Layout user={user}>
 <form id='poisk' method='POST' action='/poisk'>
@@ -23,6 +23,25 @@ function Poisk( {user} ) {
     <button type="submit" className="btn btn-primary">Отправить</button>
   </fieldset>
 </form>
+
+<legend>Ваши хорошие новости:</legend>
+<div className="mb-3">
+      <div className="form-check">
+        <h1>news</h1>
+      </div>
+    </div>
+
+    {plainSlova && plainSlova.map(({ id, gword }) => (
+                   
+      <div className="card" key={id} >
+       <div className="card-body">
+          <p className="card-text">  </p>
+         <h5 className="card-title"> {gword}</h5>
+       </div>
+     </div>
+           ))}
+
+
     </Layout>
 
     
