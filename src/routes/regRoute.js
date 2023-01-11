@@ -23,7 +23,7 @@ router.post('/', async (req, res) => {
     
     req.session.userName = myUser.username; // создаем сессию - юзер сессии равен юзеру из базы
     // req.session.id = myUser.id; 
-    console.log('------------------>', req.session.userName)
+    // console.log('------------------>', req.session.userName)
   
     req.session.save(() => {
       // res.redirect('/home');
