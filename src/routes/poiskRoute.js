@@ -26,10 +26,18 @@ router.post('/', async (req, res) => {
     }
   });
 
-router.get('/', (req, res) => {
-    const user = req.session?.userName;
-    renderTemplate(Poisk, { user }, res);
-  });
+  router.get('/', async (req, res) => {
+    try {
+        const goodwords = await Good.findAll();
+        const plainSlova = goodwords.map((item) => item.get({ plain: true }));
+         const user = req.session?.userName;
+        renderTemplate(Poisk, { plainSlova, user }, res);
+   
+    } catch (error) {
+        console.log(error);
+    }
+ })
+ 
 
 
 module.exports = router;
