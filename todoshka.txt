@@ -1,0 +1,456 @@
+1. Инициализация проекта 
+
+npm init -y
+npm i express
+npx create-gitignore node
+npx eslint --init
+npm i -D nodemon morgan
+npm i express-session session-file-store bcrypt
+_________________________________
+в package.json добавить
+
+    "start": "node src/index.js"
+    "dev": "nodemon src/index.js --ignore sessions --ext js,jsx"
+_________________________________
+npm i @babel/core @babel/preset-env @babel/preset-react @babel/register react react-dom
+
+файл .babelrc и туда
+
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": "> 5%"
+      }
+    ],
+    "@babel/preset-react"
+  ]
+}
+_________________________________
+2. База данных
+
+npm i sequelize pg pg-hstore sequelize
+npm install --save-dev sequelize-cli
+npx sequelize-cli init
+_________________________________
+файл .sequelizerc и туда:
+
+    require('dotenv').config();
+    const path = require('path');
+    module.exports = {
+        'config': path.resolve('db', 'config', 'database.json'),
+        'models-path': path.resolve('db', 'models'),
+        'seeders-path': path.resolve('db', 'seeders'),
+        'migrations-path': path.resolve('db', 'migrations'),
+       };
+
+npx sequelize-cli init
+_________________________________
+npm i dotenv
+
+в config - database.json пишем:
+
+    "development": {
+    "use_env_variable": "DATABASE_URL"
+    },
+
+файл .env и заменить admindb:admindb на свои:
+
+    PORT=3000
+    DATABASE_URL=postgres://admindb:admindb@localhost:5432/nazvanie
+
+сделать .env copy и туда:
+
+    PORT=3000
+    DATABASE_URL=postgres://admindb:admindb@localhost:5432/nazvanie
+_________________________________
+npx sequelize db:create
+npx sequelize model:generate --name User --attributes username:string,password:string
+npx sequelize db:migrate
+    (npx sequelize db:migrate:undo:all)
+_________________________________
+
+3. Основной скрипт 
+
+папка src => index.js =>
+
+    require("dotenv").config();
+
+    const path = require('path');
+    const express = require("express");
+    const morgan = require("morgan");
+    const app = express();
+    const { PORT, SESSION_SECRET } = process.env;
+    const { sequelize } = require('../db/models');
+
+    const { PORT, SESSION_SECRET } = process.env;
+    const { sequelize } = require('../db/models');
+
+    app.use(morgan('dev'));
+    app.use(express.static('public'));
+    app.use(express.urlencoded({ extended: true }));
+    app.use(express.json());
+
+                в самый конец:
+
+                app.listen(PORT, async () => {
+                try {
+                    await sequelize.authenticate();
+                    console.log('Соединение с базой установлено!');
+                } catch (err) {
+                    console.log(err, 'Error!');
+                }
+                console.log(`Сервер поднят на ${PORT} порту!`);
+                });
+_________________________________
+4. вьюшки
+
+папка src => views => views/Layout.jsx views/Home.jsx views/Cabinet.jsx views/Registration.jsx
+
+Layout.jsx:
+
+        const React = require('react');
+
+        function Layout({children}) {
+        return (
+            <html lang="en">
+            <head>
+                <meta charSet="UTF-8" />
+                <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossOrigin="anonymous" />
+                <title>Наштайтл</title>
+            </head>
+            <body>
+    
+        <div className="grid text-center">
+              <div className="container px-4 text-center">
+                <div className="row gx-5">
+                  <header>
+                      
+                    {user? (
+                            
+                            <nav className="navbar navbar-expand-lg bg-light">
+                           <div className="container-fluid">
+
+                        <a className="navbar-brand" href="/">Чёнибудь  <br /> <h5>Привет - {user}</h5>  </a> 
+                          <ul className="navbar-nav">
+                          <li className="nav-item">
+                              <a className="nav-link" href="/news">Поиск хороших новостей</a>
+                            </li>
+                            <li className="nav-item">
+                              <a className="nav-link" href="/cabinet">Личный кабинет</a>
+                            </li>
+                            <li className="nav-item">
+                              <a className="nav-link" href="/logout">Выйти</a>
+                            </li>
+                            </ul>
+                            </div>
+                           </nav>
+                            
+                    ) : (
+                            
+                      <nav className="navbar navbar-expand-lg bg-light">
+                      <div className="container-fluid">
+
+                      <a className="navbar-brand" href="/">Чёнибудь</a> 
+                          <ul className="navbar-nav">
+                            <li className="nav-item">
+                              <a className="nav-link" href="/reg">Регистрация</a>
+                            </li><li className="nav-item">
+                                <a className="nav-link" href="/login">Войти</a>
+                              </li>
+                              </ul>
+                   </div>
+                           </nav>    
+                    )} 
+                  </header>
+                  { children }
+                </div>
+              </div>
+        </div>
+        <script  src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossOrigin="anonymous" />
+      </body>
+            </html>
+        );
+        };
+        module.exports = Layout;
+_________________________________
+Home.jsx:
+
+        const React = require('react');
+        const Layout = require('./Layout');
+
+        function Home({ user }) {
+        return (
+            <Layout user = {user}>
+            <h3>бубубу</h3>
+            </Layout>
+        );
+        };
+        module.exports = Home;
+_________________________________
+Cabinet.jsx:
+
+        const React = require('react');
+        const Layout = require('./Layout');
+
+        function Cabinet( {user} ) {
+        return (
+            <Layout user={user}>
+        <h1>кабинет</h1>
+            </Layout>
+            
+        );
+        }
+        module.exports = Cabinet;
+_________________________________
+Registration.jsx:
+
+const React = require('react');
+const Layout = require('./Layout');
+
+function Reg( {user} ) {
+  return (
+    <Layout user={user}>
+      <script defer src="./js/regFetch.js"> </script>
+
+      <main className="form">
+        <h1>Зарегистрируйтесь!</h1> 
+        <form name="reg" id='reg'>
+          <br />
+          <div className="mb-3">
+            <label htmlFor="exampleInputEmail1" className="form-label">Адрес электронной почты</label>
+            <input name='email' type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+            <div id="emailHelp" className="form-text">Мы никому не передадим вашу  почту.</div>
+          </div>
+          <br />
+          <div>
+          <label htmlFor="exampleInputEmail1" className="form-label">Имя</label>
+            <input name='username' type="text" className="form-control" id="exampleInputEmail1"  />
+            <div id="emailHelp" className="form-text"> Ваш ник на сайте.</div>
+          </div>
+          <br />
+          <div className="mb-3">
+            <label htmlFor="exampleInputPassword1" className="form-label">Пароль</label>
+            <input name='password' type="password" className="form-control" id="exampleInputPassword1" />
+          </div>
+
+         <br />
+
+          <button id='button' type="submit" className="btn btn-primary">Зарегестрироваться</button>
+        </form>
+      </main>
+     
+    </Layout>    
+  );
+}
+
+module.exports = Reg;
+_________________________________
+
+5. рендер шаблонов
+папка src => lib => renderTemplate.js:
+
+        require("@babel/register");
+
+        const React = require("react");
+        const ReactDOMServer = require("react-dom/server");
+
+        const renderTemplate = (reactElement, properties, response) => {
+            const reactEl = React.createElement(reactElement, properties);
+            const html = ReactDOMServer.renderToStaticMarkup(reactEl);
+            response.write("<!DOCTYPE html>");
+         response.write(html);
+            response.end();
+        };
+        module.exports = renderTemplate;
+_________________________________
+
+папка src => routes => homeRoute.js regRoute.js loginRouter.js logoutRout.js
+homeRoute.js:
+
+        const express = require('express');
+        const router = express.Router();
+        const renderTemplate = require('../lib/renderTemplate');
+        const Home = require('../views/Home');
+
+        router.get('/', (req, res) => {
+        const user = req.session?.userName;
+        renderTemplate(Home, { user }, res);
+        });
+
+        module.exports = router;
+_________________________________
+regRoute.js:
+
+        const bcrypt = require('bcrypt'); // хеширование пароля
+        const express = require('express');
+        const router = express.Router();
+        const renderTemplate = require('../lib/renderTemplate');
+        const Reg = require('../views/Registration');
+        const { User } = require('../../db/models');
+
+        router.post('/', async (req, res) => {
+        const {email, username, password} = req.body; // берем из вьюшки из инпутов
+        try {
+        const hashedPassword = await bcrypt.hash(password, 10);
+            const myUser = await User.create({email: email, username: username, password: hashedPassword }); // запись юзера в базу        
+            req.session.userName = myUser.username; // создаем сессию - юзер сессии равен юзеру из базы        
+            req.session.save(() => {
+            });
+
+            res.json(myUser);
+        
+        } catch (error) {
+            console.log(error);
+            
+        }
+        });
+
+        router.get('/', (req, res) => {
+        const user = req.session?.userName;
+        renderTemplate(Reg, { user }, res);
+        });
+
+        module.exports = router;
+_________________________________
+loginRouter.js:
+
+        const bcrypt = require('bcrypt');
+        const express = require('express');
+        const router = express.Router();
+        const renderTemplate = require('../lib/renderTemplate');
+        const { User } = require('../../db/models');
+        const Login = require('../views/Login');
+
+        router.post ('/', async (req, res) => {
+        const { username, password } = req.body;
+        try {
+            // ищем юзера по логину
+            const user = await User.findOne({ where: { username } });
+        
+            if (user) {
+            //  расхешировать пароли и проверить на совпадение
+            // ? compare - вернёт true / false
+            const passCheck = await bcrypt.compare(password, user.password);
+            //  Проверка
+            if (passCheck) {
+                // создание+сохранение сессии и редирект
+                req.session.userName = user.username;
+                req.session.save(() => {
+                res.redirect('/');
+                });
+                
+            } else {
+                res.redirect('/reg');
+            }
+            } else {
+            res.redirect('/reg');
+            }
+        } catch (error) {
+            res.send(`ERROR---> ${error}`);
+        }
+        });
+
+        router.get('/', (req, res) => {
+            renderTemplate(Login, {}, res);
+        });
+
+        module.exports = router;
+_________________________________
+logoutRout.js:
+
+        const express = require('express');
+        const router = express.Router();
+        const checkUser = require('../middlewars/checkUser');
+
+        router.get('/', checkUser, (req, res) => {       
+        req.session.destroy(() => {
+            res.clearCookie('gncookies');
+            res.redirect('/');
+        });
+        });
+
+        module.exports = router;
+_________________________________
+6. мидлварк на проверку юзера
+
+src => middlewars => checkUser.js: 
+
+        const checkUser = (req, res, next) => {
+            if (req.session.userName) {
+            next();
+            } else {
+            res.redirect('/');
+            }
+        };
+        
+        module.exports = checkUser;
+_________________________________
+7. подключаем куки в index.js
+
+после app.use(express.json());   :
+
+const session = require('express-session')
+const FileStore = require('session-file-store')(session)
+
+const homeRoute = require('./routes/homeRoute');
+const regRoute = require('./routes/regRoute');
+const logoutRoute = require('./routes/logoutRout');
+const loginRoute = require('./routes/loginRouter');
+const cabinetRoute = require('./routes/cabinetRoute');
+
+const sessionConfig = {
+    name: 'gncookies',
+    store: new FileStore(),
+    secret: SESSION_SECRET ?? 'Секретное слово',
+    resave: false, // * если true, пересохранит сессию, даже если она не менялась
+    saveUninitialized: false, // * если false, куки появятся только при установке req.session
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 24 * 5, // * время жизни в мс (ms)
+      httpOnly: true,
+    }
+  }
+
+app.use(session(sessionConfig))
+_________________________________
+Перекинуть на хоум, если пустой слеш:
+
+  app.get('/', (req, res) => {
+    res.redirect('/home');
+  });
+_________________________________
+ручки:
+
+  app.use('/home', homeRoute);
+  app.use('/reg', regRoute);
+  app.use('/logout', logoutRoute);
+  app.use('/login', loginRoute);
+  app.use('/cabinet', cabinetRoute);
+_________________________________
+8. делаем фетч
+  
+  src => public => js => regFetch.js:
+
+const reg = document.querySelector('#reg'); // фетч привязываем к джсхсной форме во вьюшках
+
+reg.addEventListener('submit', async (event) => {
+  event.preventDefault(); // чтобы не было перезагрузки
+  const { email, username, password } = reg;
+
+const myPost = { email: email.value, username: username.value, password: password.value }; 
+
+const zapis = await fetch(
+    '/reg', // откуда берем данные
+    {
+      method: 'POST',
+      body: JSON.stringify(myPost), // привести майпост к строке
+      headers: { 'Content-type': 'application/json' }, 
+    },
+  );
+    if(zapis.ok) {
+      window.location.replace('/home')
+    }
+});
