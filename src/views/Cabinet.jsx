@@ -5,6 +5,9 @@ const Layout = require('./Layout');
 function Cabinet( {user, goodWords, badWords} ) {
   return (
     <Layout user={user}>
+      <body style={{
+        backgroundPosition: 'center', background: '-webkit-linear-gradient(225deg, rgb(142, 139, 124), rgb(255, 255, 255));', backgroundRepeat: 'repeat', height: '135vh',
+      }}>
 <h3>Дружище {user}, ты хотел найти:</h3>
 {goodWords && goodWords.map(({ id, gword }) => (
                    
@@ -19,7 +22,7 @@ function Cabinet( {user, goodWords, badWords} ) {
                     <p>{bword}</p>
                   </div>
                         ))}
-                        
+            </body>            
     </Layout>
 
     

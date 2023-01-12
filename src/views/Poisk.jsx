@@ -43,6 +43,7 @@ function Poisk({ user, plainSlova }) {
             {plainSlova && plainSlova.map(({ id, gword }) => (
 
               <div className="card" key={id} >
+                <h3>Чаще всего ищут:</h3>
                 <div className="card-body">
                   <p className="card-text">  </p>
                   <h5 className="card-title"> {gword}</h5>
