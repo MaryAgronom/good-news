@@ -4,7 +4,6 @@ const NewsAPI = require('newsapi');
 const newsapi = new NewsAPI('6d5350ec4bb34b31b6be51afc8305f76');
 
 
-
 const path = require('path');
 const express = require('express');
 const morgan = require('morgan');

@@ -29,13 +29,6 @@ function Poisk({ user, plainSlova }) {
               </div>
               <button type="submit" className="btn btn-dark" id='button'>Отправить</button>
             </form>
-
-            <div className='offers'>
-              <legend>Ваши хорошие новости:</legend>
-              <div className="mb-3">
-                <div className="form-check" id='newsDiv'>
-                  <h1>news</h1>
-                </div>
               </div>
             </div>
           </div>
