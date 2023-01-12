@@ -43,12 +43,12 @@ button.addEventListener('click', async () => {
                    
       ` 
       <br />
-      <div> Author ===> ${newsApi[i].author }</div>
-        <div> Title ===> ${newsApi[i].title }</div>
-        <div> Discrip ===> ${newsApi[i].description}</div>
+        <div><b><big>${newsApi[i].title }</big></b></div>
+        <p>
+        <div align="justify">${newsApi[i].description}</div>
+        <img width="600px" height="300" src="${newsApi[i].urlToImage}" />
+        </p>
         <a href="${newsApi[i].url}">${newsApi[i].url}</a>
-        <img src="${newsApi[i].urlToImage}" />
-       
         <br />
       `
       newsDiv.appendChild(per) 
