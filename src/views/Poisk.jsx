@@ -5,6 +5,7 @@ const Layout = require('./Layout');
 function Poisk({ user, plainSlova }) {
   return (
     <Layout user={user}>
+
     <script defer src="./js/poiskFeth.js"> </script>
      <script defer src="./js/buttonFetch.js"> </script>
       <body style={{
@@ -12,8 +13,8 @@ function Poisk({ user, plainSlova }) {
       }}>
         <div className='container'>
           <div className='search'>
-            <form id='poisk'>
-              <fieldset>
+            <form className='poiskForm' id='poisk'>
+              
                 <legend>Выберите новости по ключевым словам:</legend>
                 <div className="mb-3">
                   <label htmlFor="TextInput" className="form-label">Хорошие слова</label>
@@ -28,12 +29,21 @@ function Poisk({ user, plainSlova }) {
                   </div>
                 </div>
 
-                <button type="submit" className="btn btn-primary" id='button'>Отправить</button>
+                <button type="submit" className="btn btn-dark" id='button'>Отправить</button>
 
                 
 
               </fieldset>
+
             </form>
+            <div className='offers'>
+              <legend>Ваши хорошие новости:</legend>
+              <div className="mb-3">
+                <div className="form-check">
+                  <h1>news</h1>
+                </div>
+              </div>
+            </div>
           </div>
 
 
@@ -50,7 +60,7 @@ function Poisk({ user, plainSlova }) {
             <h3>Чаще всего ищут:</h3>
 
             {plainSlova && plainSlova.map(({ id, gword }) => (
-               
+
               <div className="card" key={id} >
                 <div className="card-body">
                   <p className="card-text">  </p>
@@ -58,16 +68,8 @@ function Poisk({ user, plainSlova }) {
                 </div>
               </div>
             ))}
-            </div>
-
           </div>
-          <div className='offers'>
-            <legend>Ваши хорошие новости:</legend>
-            <div className="mb-3">
-              <div className="form-check">
-                <h1>news</h1>
-              </div>
-            </div>
+
         </div>
       </body>
 

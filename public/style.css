@@ -55,6 +55,11 @@
 }
 
 .x {
- 
+ padding-right: 10px;
+}
+
+.poiskForm {
+  display: flex;
+  flex-direction: row;
 }
 
