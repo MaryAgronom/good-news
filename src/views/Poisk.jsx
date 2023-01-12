@@ -35,7 +35,7 @@ function Poisk({ user, plainSlova }) {
               </fieldset>
             </form>
           </div>
-
+  </div>
 
           <div className='offers'>
             <legend>Ваши хорошие новости:</legend>
