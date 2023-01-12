@@ -7,16 +7,15 @@
 
 .search {
   display: inline-block;
-  margin-top: 80px;
+  margin-top: 40px;
   margin-left: 30px;
   width: 40rem;
 }
 
 .offers {
-  margin-top: 80px;
+  margin-top: 40px;
   border-radius: 0.5em;
-  margin-left: 100px;
-  width: 30rem;
+  width: 51rem;
   background: rgb(255, 255, 255, .6);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
 }
@@ -44,18 +43,18 @@
 
 .card-columns {
   margin-left: 250px;
-  margin-top: 80px;
+  margin-top: 40px;
 }
 
 .cabinet {
   justify-content: center;
   font-family: 'Poppins', sans-serif;
-  margin-top: 50px;
+  margin-top: 40px;
   display: flex;
 }
 
 .x {
- padding-right: 10px;
+ padding-right: 30px;
 }
 
 .poiskForm {
@@ -63,7 +62,12 @@
   flex-direction: row;
 }
 
+
 .img {
   width: 100px;
   height: 70px;
 }
+
+
+
+

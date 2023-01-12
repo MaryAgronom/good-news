@@ -13,21 +13,25 @@ function Poisk({ user, plainSlova }) {
       }}>
         <div className='container'>
           <div className='search'>
-            <form className='poiskForm' id='poisk'>
               <legend>Выберите новости по ключевым словам:</legend>
+            <form className='poiskForm' id='poisk'>
               <div className="mb-3">
-                <label htmlFor="TextInput" className="form-label"> Хорошие слова</label>
+
+                
+
+                <label htmlFor="TextInput" className="form-label" style={{ width:"340px" }}>Включить в поиск:</label>
+
                 <input type="text" id="good" className="form-control" name="gword" />
               </div>
               <div className="mb-3">
-                <label htmlFor="TextInput" className="form-label">Плохие слова</label>
+                <label htmlFor="TextInput" className="form-label" style={{ width:"340px" }}>Исключить из поиска:</label>
                 <input type="text" id="bad" className="form-control" name="bword" />
               </div>
               <div className="mb-3">
                 <div className="form-check">
                 </div>
               </div>
-              <button type="submit" className="btn btn-dark" id='button'>Отправить</button>
+              <button type="submit" className="btn btn-dark" id='button' style={{ width:"200px", height:"50px", marginTop:"25px" }}>Отправить</button>
             </form>
 
             <div className='offers'>
