@@ -12,16 +12,16 @@ function Poisk({ user, plainSlova }) {
       }}>
         <div className='container'>
           <div className='search'>
-            <form id='poisk' method='POST' action='/poisk'>
+            <form id='poisk'>
               <fieldset>
                 <legend>Выберите новости по ключевым словам:</legend>
                 <div className="mb-3">
                   <label htmlFor="TextInput" className="form-label">Хорошие слова</label>
-                  <input type="text" id="TextInput" className="form-control" name="gwords" />
+                  <input type="text" id="TextInput" className="form-control" name="gword" />
                 </div>
                 <div className="mb-3">
                   <label htmlFor="TextInput" className="form-label">Плохие слова</label>
-                  <input type="text" id="TextInput" className="form-control" name="bwords" />
+                  <input type="text" id="TextInput" className="form-control" name="bword" />
                 </div>
                 <div className="mb-3">
                   <div className="form-check">
@@ -41,8 +41,9 @@ function Poisk({ user, plainSlova }) {
             </div>
 
             {plainSlova && plainSlova.map(({ id, gword }) => (
-
+               
               <div className="card" key={id} >
+                <h3>Чаще всего ищут:</h3>
                 <div className="card-body">
                   <p className="card-text">  </p>
                   <h5 className="card-title"> {gword}</h5>
