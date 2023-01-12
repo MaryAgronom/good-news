@@ -27,11 +27,25 @@ function Poisk({ user, plainSlova }) {
                   <div className="form-check">
                   </div>
                 </div>
-                <button type="submit" className="btn btn-primary">Отправить</button>
+                <button type="submit" className="btn btn-dark">Отправить</button>
               </fieldset>
             </form>
           </div>
 
+          <div className="card-columns">
+            <h3>Чаще всего ищут:</h3>
+            {plainSlova && plainSlova.map(({ id, gword }) => (
+               
+              <div className="card" key={id} >
+                <div className="card-body">
+                  <p className="card-text">  </p>
+                  <h5 className="card-title"> {gword}</h5>
+                </div>
+              </div>
+            ))}
+            </div>
+
+          </div>
           <div className='offers'>
             <legend>Ваши хорошие новости:</legend>
             <div className="mb-3">
@@ -39,18 +53,6 @@ function Poisk({ user, plainSlova }) {
                 <h1>news</h1>
               </div>
             </div>
-
-            {plainSlova && plainSlova.map(({ id, gword }) => (
-               
-              <div className="card" key={id} >
-                <h3>Чаще всего ищут:</h3>
-                <div className="card-body">
-                  <p className="card-text">  </p>
-                  <h5 className="card-title"> {gword}</h5>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       </body>
 

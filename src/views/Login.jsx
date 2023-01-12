@@ -6,7 +6,9 @@ function Login( {  } ) {
   return (
     <Layout >
      
-
+     <body style={{
+        backgroundPosition: 'center', background: '-webkit-linear-gradient(225deg, rgb(142, 139, 124), rgb(255, 255, 255));', backgroundRepeat: 'repeat', height: '135vh',
+      }}>
       <main className="form">
        
         <form name="login" id='login' method='POST' action='/login' >
@@ -24,10 +26,11 @@ function Login( {  } ) {
 
          <br />
 
-          <button type="submit" className="btn btn-primary">Войти</button>
+          <button type="submit" className="btn btn-dark">Войти</button>
         </form>
       </main>
-     
+      </body>
+      
     </Layout>
 
     
