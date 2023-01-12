@@ -1,8 +1,5 @@
 require('dotenv').config();
 
-const NewsAPI = require('newsapi');
-const newsapi = new NewsAPI('6d5350ec4bb34b31b6be51afc8305f76');
-
 
 const path = require('path');
 const express = require('express');
@@ -23,10 +20,6 @@ app.use(express.json());
 
 
 // cookies
-// cookies
-// cookies
-// cookies
-
 
 const session = require('express-session')
 const FileStore = require('session-file-store')(session)
