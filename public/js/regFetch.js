@@ -7,6 +7,8 @@ reg.addEventListener('submit', async (event) => {
 
 const myPost = { email: email.value, username: username.value, password: password.value }; 
 
+console.log('mwPost========>>', myPost);
+
 const zapis = await fetch(
     '/reg', // откуда берем данные
     {
@@ -17,7 +19,7 @@ const zapis = await fetch(
     },
   );
     if(zapis.ok) {
-      window.location.replace('/home')
+      window.location.replace('/poisk')
     }
 
 

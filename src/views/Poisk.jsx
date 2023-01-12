@@ -4,8 +4,9 @@ const Layout = require('./Layout');
 
 function Poisk({ user, plainSlova }) {
   return (
-
     <Layout user={user}>
+    <script defer src="./js/poiskFeth.js"> </script>
+    
       <body style={{
         backgroundPosition: 'center', background: '-webkit-linear-gradient(225deg, rgb(142, 139, 124), rgb(255, 255, 255));', backgroundRepeat: 'repeat', height: '135vh',
       }}>

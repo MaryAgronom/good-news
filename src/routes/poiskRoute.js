@@ -4,21 +4,22 @@ const router = express.Router();
 
 const renderTemplate = require('../lib/renderTemplate');
 
-const { Bad, Good, User } = require('../../db/models')
+const { Bad, Good, User } = require('../../db/models');
 
 const Poisk = require('../views/Poisk');
 
 router.post('/', async (req, res) => {
-    const {gwords, bwords} = req.body; // берем из вьюшки из инпутов
-    console.log('---------------->', gwords, bwords);
+    console.log('req.body----------->', req.body);
+    const {gword, bword} = req.body; 
+    console.log('WORDS---------------->', gword, bword);
     const user = req.session.userName;
     try {
     const userid = await User.findOne({ where: { username: user } });
     
-    const horoshee = await Good.create({ gword: gwords, userid: userid.id }); 
-    const plohoe = await Bad.create({ bword: bwords, userid: userid.id }); 
+    const horoshee = await Good.create({ gword: gword, userid: userid.id }); 
+    const plohoe = await Bad.create({ bword: bword, userid: userid.id }); 
   
-     res.redirect('/poisk');
+    res.json({horoshee, plohoe});
   
     } catch (error) {
       console.log(error);
