@@ -9,9 +9,9 @@ const { Bad, Good, User } = require('../../db/models');
 const Poisk = require('../views/Poisk');
 
 router.post('/', async (req, res) => {
-    console.log('req.body----------->', req.body);
+    // console.log('req.body----------->', req.body);
     const {gword, bword} = req.body; 
-    console.log('WORDS---------------->', gword, bword);
+    // console.log('WORDS---------------->', gword, bword);
     const user = req.session.userName;
     try {
     const userid = await User.findOne({ where: { username: user } });

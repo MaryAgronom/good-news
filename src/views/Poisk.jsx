@@ -6,7 +6,7 @@ function Poisk({ user, plainSlova }) {
   return (
     <Layout user={user}>
     <script defer src="./js/poiskFeth.js"> </script>
-    
+     <script defer src="./js/buttonFetch.js"> </script>
       <body style={{
         backgroundPosition: 'center', background: '-webkit-linear-gradient(225deg, rgb(142, 139, 124), rgb(255, 255, 255));', backgroundRepeat: 'repeat', height: '135vh',
       }}>
@@ -17,17 +17,17 @@ function Poisk({ user, plainSlova }) {
                 <legend>Выберите новости по ключевым словам:</legend>
                 <div className="mb-3">
                   <label htmlFor="TextInput" className="form-label">Хорошие слова</label>
-                  <input type="text" id="TextInput" className="form-control" name="gword" />
+                  <input type="text" id="good" className="form-control" name="gword" />
                 </div>
                 <div className="mb-3">
                   <label htmlFor="TextInput" className="form-label">Плохие слова</label>
-                  <input type="text" id="TextInput" className="form-control" name="bword" />
+                  <input type="text" id="bad" className="form-control" name="bword" />
                 </div>
                 <div className="mb-3">
                   <div className="form-check">
                   </div>
                 </div>
-                <button type="submit" className="btn btn-primary">Отправить</button>
+                <button type="submit" className="btn btn-primary" id='button'>Отправить</button>
               </fieldset>
             </form>
           </div>
@@ -35,7 +35,7 @@ function Poisk({ user, plainSlova }) {
           <div className='offers'>
             <legend>Ваши хорошие новости:</legend>
             <div className="mb-3">
-              <div className="form-check">
+              <div className="form-check" id='newsDiv'>
                 <h1>news</h1>
               </div>
             </div>
