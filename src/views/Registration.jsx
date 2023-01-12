@@ -7,6 +7,9 @@ function Reg( {user} ) {
     <Layout user={user}>
       <script defer src="./js/regFetch.js"> </script>
 
+      <body style={{
+        backgroundPosition: 'center', background: '-webkit-linear-gradient(225deg, rgb(142, 139, 124), rgb(255, 255, 255));', backgroundRepeat: 'repeat', height: '135vh',
+      }}>
       <main className="form">
         <h1>Зарегистрируйтесь!</h1> 
         <form name="reg" id='reg'>
@@ -30,10 +33,11 @@ function Reg( {user} ) {
 
          <br />
 
-          <button id='button' type="submit" className="btn btn-primary">Зарегестрироваться</button>
+          <button id='button' type="submit" className="btn btn-dark">Зарегестрироваться</button>
         </form>
       </main>
-     
+      </body>
+
     </Layout>
 
     
