@@ -1,0 +1,30 @@
+.navbar {
+  background: -webkit-linear-gradient(45deg, rgb(120, 117, 103), rgb(255, 255, 255));
+  border-radius: 0.5em;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  margin-top: 10px;
+}
+
+.search {
+  margin-top: 100px;
+  margin-left: 30px;
+  width: 40rem;
+}
+
+.offers {
+  margin-top: 100px;
+  border-radius: 0.5em;
+  margin-left: 100px;
+  width: 30rem;
+  background: rgb(255, 255, 255, .6);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+}
+
+.container {
+  display: flex;
+  font-family: 'Poppins', sans-serif;
+}
+
+.grid {
+  width: 100%;
+}
