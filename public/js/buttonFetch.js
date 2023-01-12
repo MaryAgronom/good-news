@@ -2,10 +2,14 @@
 const button = document.querySelector('#button');
 const newsDiv = document.querySelector('#newsDiv');
 const good2 = document.querySelector('#good');
+const bad2 = document.querySelector('#bad');
 
 button.addEventListener('click', async () => {
-//  console.log("GOOD====>", good2.value);
+//  console.log("BAD====>", bad2.value);
     const goody = good2.value;
+    const bad = bad2.value;
+    const toLowBad = bad.toLowerCase();
+    const toUpBad = bad.toUpperCase();
     let zapros = `https://newsapi.org/v2/everything?q=${goody}&from=2023-01-12&to=&sortBy=popularity&apiKey=6d5350ec4bb34b31b6be51afc8305f76`
     let zaStrind = String(zapros)
     // console.log('STRING=====>', zaStrind);
@@ -15,6 +19,15 @@ button.addEventListener('click', async () => {
    const newsApi = result.articles
    console.log('newsAPI======>',newsApi)
 
+  let resultNews = [];
+  for (let i =0; i<newsApi.length; i++) {
+    if (newsApi[i].description.indexOf(toLowBad) === -1 && newsApi[i].description.indexOf(toUpBad) === -1) {
+      resultNews.push(newsApi[i])
+    }
+  }
+
+  console.log('resultNews======>',resultNews);
+  console.log('description======>',newsApi[0].description);
 
   //  curl https://newsapi.org/v2/everything -G \
   //   -d q=Apple \
@@ -22,15 +35,8 @@ button.addEventListener('click', async () => {
   //   -d sortBy=popularity \
   //   -d apiKey=6d5350ec4bb34b31b6be51afc8305f76
    
-  //  newsDiv.innerHTML = newsApi.map((el) => {
-  //   ` <div> Author ===> ${el.author }</div>
-  //       <div> Title ===> ${el.title }</div>
-  //       <div> Discrip ===> ${el.description}</div>
-  //       <div> URL ===> ${el.url}</div>
-  //     `
-  //  })
-
-  for (let i =0; i<newsApi.length; i++) {
+  if (resultNews.length === 0) {
+    for (let i =0; i<newsApi.length; i++) {
     const per = document.createElement('div')
     
     per.innerHTML = 
@@ -47,6 +53,27 @@ button.addEventListener('click', async () => {
       `
       newsDiv.appendChild(per) 
   }
+  } else {
+    for (let i =0; i<resultNews.length; i++) {
+    const per = document.createElement('div')
+    
+    per.innerHTML = 
+                   
+      ` 
+      <br />
+      <div> Author ===> ${resultNews[i].author }</div>
+        <div> Title ===> ${resultNews[i].title }</div>
+        <div> Discrip ===> ${resultNews[i].description}</div>
+        <a href="${resultNews[i].url}">${resultNews[i].url}</a>
+        <img src="${resultNews[i].urlToImage}" />
+       
+        <br />
+      `
+      newsDiv.appendChild(per) 
+  }
+  }
+
+  
 
 })
 
