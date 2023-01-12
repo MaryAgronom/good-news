@@ -16,7 +16,11 @@ function Poisk({ user, plainSlova }) {
               <legend>Выберите новости по ключевым словам:</legend>
             <form className='poiskForm' id='poisk'>
               <div className="mb-3">
+
+                
+
                 <label htmlFor="TextInput" className="form-label" style={{ width:"340px" }}>Включить в поиск:</label>
+
                 <input type="text" id="good" className="form-control" name="gword" />
               </div>
               <div className="mb-3">
@@ -34,12 +38,12 @@ function Poisk({ user, plainSlova }) {
               <legend>Ваши хорошие новости:</legend>
               <div className="mb-3">
                 <div className="form-check" id='newsDiv'>
-                  <h1>news</h1>
+                  {/* <h1>news</h1> */}
                 </div>
               </div>
             </div>
           </div>
-
+       
           <div className="card-columns">
             <h3>Чаще всего ищут:</h3>
 
