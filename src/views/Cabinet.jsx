@@ -20,7 +20,7 @@ function Cabinet({ user, goodWords, resultBad }) {
           </div>
           <div>
             <h3>Не хотел видеть</h3>
-            {badWords && badWords.map(({ id, bword }) => (
+            {resultBad && resultBad.map((el) => (
               <div className="card" key={el} >
                 <p>{el}</p>
               </div>
