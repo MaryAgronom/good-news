@@ -10,7 +10,7 @@ function Cabinet({ user, goodWords, resultBad }) {
       }}>
         <div className='cabinet'>
           <div className='lk'>
-            <h3>Дружище {user}, <br />ты хотел найти:</h3>
+            <h3>Ты хотел найти</h3>
             {goodWords && goodWords.map(({ id, gword }) => (
 
               <div className="card" key={id} >
@@ -19,9 +19,8 @@ function Cabinet({ user, goodWords, resultBad }) {
             ))}
           </div>
           <div>
-            <h3>Не хотел <br />видеть:</h3>
-            {resultBad && resultBad.map(( el ) => (
-
+            <h3>Не хотел видеть</h3>
+            {badWords && badWords.map(({ id, bword }) => (
               <div className="card" key={el} >
                 <p>{el}</p>
               </div>

@@ -45,7 +45,7 @@ button.addEventListener('click', async () => {
         <div><b><big>${newsApi[i].title }</big></b></div>
         <p>
         <div align="justify">${newsApi[i].description}</div>
-        <img width="600px" height="300" src="${newsApi[i].urlToImage}" alt="Нет доступного изображения"/>
+        <img width="600px" height="300" src="${newsApi[i].urlToImage}" alt=" "/>
         </p>
         <a href="${newsApi[i].url}" target="_blank">Ссылка на источник</a>
         <br />
@@ -63,7 +63,7 @@ button.addEventListener('click', async () => {
       <div><b><big>${resultNews[i].title }</big></b></div>
       <p>
       <div align="justify">${resultNews[i].description}</div>
-      <img width="600px" height="300" src="${resultNews[i].urlToImage}" alt="Нет доступного изображения"/>
+      <img width="600px" height="300" src="${resultNews[i].urlToImage}" alt=" "/>
       </p>
       <a href="${resultNews[i].url}" target="_blank">Ссылка на источник</a>
       <br />
