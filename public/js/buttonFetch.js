@@ -9,7 +9,7 @@ button.addEventListener('click', async () => {
     const goody = good2.value.toLowerCase();
     const bad = bad2.value.toLowerCase();
     
-    let zapros = `https://newsapi.org/v2/everything?q=${goody}&from=2023-01-13&to=&sortBy=popularity&apiKey=26788ac3dc5d4befa0c5db3b94def467`
+    let zapros = `https://newsapi.org/v2/everything?q=${goody}&from=2023-01-12&to=&sortBy=popularity&apiKey=26788ac3dc5d4befa0c5db3b94def467`
     let zaStrind = String(zapros)
     // console.log('STRING=====>', zaStrind);
    const response = await fetch(zaStrind)
