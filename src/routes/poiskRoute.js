@@ -16,8 +16,8 @@ router.post('/', async (req, res) => {
     try {
     const userid = await User.findOne({ where: { username: user } });
     
-    const horoshee = await Good.create({ gword: gword, userid: userid.id }); 
-    const plohoe = await Bad.create({ bword: bword, userid: userid.id }); 
+    const horoshee = await Good.findOrCreate( {where: { gword: gword, userid: userid.id }}); 
+    const plohoe = await Bad.findOrCreate( {where: { bword: bword, userid: userid.id }}); 
   
     res.json({horoshee, plohoe});
   
@@ -31,8 +31,21 @@ router.post('/', async (req, res) => {
     try {
         const goodwords = await Good.findAll();
         const plainSlova = goodwords.map((item) => item.get({ plain: true }));
+        // console.log('plainSlova================>>',plainSlova);
+        
+        let result = [];
+         for (let i =0; i<plainSlova.length; i++) {
+          result.push(plainSlova[i].gword)
+  }
+  // console.log('RESULT=======>>',result);
+
+  const newSet = new Set(result); 
+  const uniqueWords = Array.from(newSet); 
+
+  // console.log('UNIC=======>>',uniqueWords);
+
          const user = req.session?.userName;
-        renderTemplate(Poisk, { plainSlova, user }, res);
+        renderTemplate(Poisk, { uniqueWords, user }, res);
    
     } catch (error) {
         console.log(error);

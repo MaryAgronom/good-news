@@ -2,14 +2,14 @@ const React = require('react');
 const Layout = require('./Layout');
 
 
-function Poisk({ user, plainSlova }) {
+function Poisk({ user, uniqueWords }) {
   return (
     <Layout user={user}>
 
       <script defer src="./js/poiskFeth.js"> </script>
       <script defer src="./js/buttonFetch.js"> </script>
       <body style={{
-        backgroundPosition: 'center', background: '-webkit-linear-gradient(225deg, rgb(142, 139, 124), rgb(255, 255, 255));', backgroundRepeat: 'repeat', height: '135vh',
+        backgroundPosition: 'center', background: '-webkit-linear-gradient(225deg, rgb(142, 139, 124), rgb(255, 255, 255));', backgroundRepeat: 'repeat', height: '700vh',
       }}>
         <div className='container'>
           <div className='search'>
@@ -47,12 +47,12 @@ function Poisk({ user, plainSlova }) {
           <div className="card-columns">
             <h3>Чаще всего ищут</h3>
 
-            {plainSlova && plainSlova.map(({ id, gword }) => (
+            {uniqueWords && uniqueWords.map(( el ) => (
 
-              <div className="card" key={id} >
+              <div className="card" key={el} >
                 <div className="card-body">
                   <p className="card-text">  </p>
-                  <h5 className="card-title"> {gword}</h5>
+                  <h5 className="card-title"> {el}</h5>
                 </div>
               </div>
             ))}

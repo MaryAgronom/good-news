@@ -28,7 +28,7 @@ router.post ('/', async (req, res) => {
          // создание+сохранение сессии и редирект
          req.session.userName = user.username;
          req.session.save(() => {
-           res.redirect('/');
+           res.redirect('/poisk');
          });
          
        } else {
