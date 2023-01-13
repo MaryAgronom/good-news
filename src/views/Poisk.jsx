@@ -21,7 +21,7 @@ function Poisk({ user, uniqueWords }) {
 
                 <label htmlFor="TextInput" className="form-label" style={{ width:"340px" }}></label>
 
-                <input type="text" id="good" className="form-control" name="gword" placeholder="Включить в поиск" />
+                <input type="text" id="good" className="form-control" name="gword" style={{ marginRight:"26px" }} placeholder="Включить в поиск" />
               </div>
               <div className="mb-3">
                 <label htmlFor="TextInput" className="form-label" style={{ width:"340px" }}></label>
