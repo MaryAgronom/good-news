@@ -2,7 +2,7 @@ const React = require('react');
 const Layout = require('./Layout');
 
 
-function Cabinet({ user, goodWords, badWords }) {
+function Cabinet({ user, goodWords, resultBad }) {
   return (
     <Layout user={user}>
       <body style={{
@@ -20,10 +20,10 @@ function Cabinet({ user, goodWords, badWords }) {
           </div>
           <div>
             <h3>Не хотел <br />видеть:</h3>
-            {badWords && badWords.map(({ id, bword }) => (
+            {resultBad && resultBad.map(( el ) => (
 
-              <div className="card" key={id} >
-                <p>{bword}</p>
+              <div className="card" key={el} >
+                <p>{el}</p>
               </div>
             ))}
           </div>
