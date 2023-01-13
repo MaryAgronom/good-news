@@ -13,7 +13,7 @@ function Poisk({ user, uniqueWords }) {
       }}>
         <div className='container'>
           <div className='search'>
-              <legend>Выберите новости по ключевым словам:</legend>
+              <legend>Выбери новости по ключевым словам</legend>
             <form className='poiskForm' id='poisk'>
               <div className="mb-3">
 
@@ -35,7 +35,7 @@ function Poisk({ user, uniqueWords }) {
             </form>
 
             <div className='offers'>
-              <legend>Ваши хорошие новости</legend>
+              <legend>Твои хорошие новости</legend>
               <div className="mb-3">
                 <div className="form-check" id='newsDiv'>
                   {/* <h1>news</h1> */}
