@@ -6,10 +6,10 @@ const bad2 = document.querySelector('#bad');
 
 button.addEventListener('click', async () => {
 //  console.log("BAD====>", bad2.value);
-    const goody = good2.value.toLowerCase();
+    const goody = good2.value.toLowerCase().replace(/ /g, '+');
     const bad = bad2.value.toLowerCase();
-    
-    let zapros = `https://newsapi.org/v2/everything?q=${goody}&from=2023-01-12&to=&sortBy=popularity&apiKey=26788ac3dc5d4befa0c5db3b94def467`
+     console.log('GOODY=====>', goody);
+    let zapros = `https://newsapi.org/v2/everything?q=${goody}&apiKey=26788ac3dc5d4befa0c5db3b94def467`
     let zaStrind = String(zapros)
     // console.log('STRING=====>', zaStrind);
    const response = await fetch(zaStrind)
