@@ -32,7 +32,7 @@ function Layout({children, user}) {
                             <nav className="navbar navbar-expand-lg bg-light">
                            <div className="container-fluid">
 
-                        <a className="navbar-brand" href="/">Good news everyone  <br /> <h5>Привет - {user}</h5>  </a> 
+                        <a className="navbar-brand" href="/">Good news everyone  <br /> <h5>Привет, {user}</h5>  </a> 
                           <ul className="navbar-nav">
                           <li className="nav-item">
                               <a className="nav-link" href="/poisk">Поиск хороших новостей</a>
