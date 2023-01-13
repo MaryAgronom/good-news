@@ -16,6 +16,7 @@ router.get('/', async (req, res) => {
     const userid = await User.findOne({ where: { username: user } });
     const goodWords = await Good.findAll({ where: { userid: userid.id } })
     const badWords = await Bad.findAll({ where: { userid: userid.id } })
+    
       renderTemplate(Cabinet, { goodWords, badWords, user }, res);
  
   } catch (error) {
