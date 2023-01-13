@@ -9,7 +9,7 @@ function Poisk({ user, plainSlova }) {
       <script defer src="./js/poiskFeth.js"> </script>
       <script defer src="./js/buttonFetch.js"> </script>
       <body style={{
-        backgroundPosition: 'center', background: '-webkit-linear-gradient(225deg, rgb(142, 139, 124), rgb(255, 255, 255));', backgroundRepeat: 'repeat', height: '135vh',
+        backgroundPosition: 'center', background: '-webkit-linear-gradient(225deg, rgb(142, 139, 124), rgb(255, 255, 255));', backgroundRepeat: 'repeat', height: '700vh',
       }}>
         <div className='container'>
           <div className='search'>
